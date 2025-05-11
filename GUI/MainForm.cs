@@ -13,7 +13,6 @@ using Newtonsoft.Json;
 using Accord.Audio;
 using Accord.Audio.Formats;
 using System.Collections.Generic;
-
 namespace Recorder
 {
     /// <summary>
@@ -225,7 +224,7 @@ namespace Recorder
             if (this.encoder != null && this.encoder.IsRunning())
             {
                 btnAdd.Enabled = false;
-                btnIdentify.Enabled = false;
+                btnIdentify.Enabled = true;
                 btnPlay.Enabled = false;
                 btnStop.Enabled = true;
                 btnRecord.Enabled = false;
@@ -234,7 +233,7 @@ namespace Recorder
             else if (this.decoder != null && this.decoder.IsRunning())
             {
                 btnAdd.Enabled = false;
-                btnIdentify.Enabled = false;
+                btnIdentify.Enabled = true;
                 btnPlay.Enabled = false;
                 btnStop.Enabled = true;
                 btnRecord.Enabled = false;
@@ -243,7 +242,7 @@ namespace Recorder
             else
             {
                 btnAdd.Enabled = this.path != null || this.encoder != null;
-                btnIdentify.Enabled = false;
+                btnIdentify.Enabled = true;
                 btnPlay.Enabled = this.path != null || this.encoder != null;//stream != null;
                 btnStop.Enabled = false;
                 btnRecord.Enabled = true;
@@ -318,6 +317,7 @@ namespace Recorder
             if (!isRecorded && signal != null)
             {
                 enrollSignal = signal;
+                enrollSignal = AudioOperations.RemoveSilence(enrollSignal);
             }
 
             else if (isRecorded && encoder != null)
@@ -326,7 +326,6 @@ namespace Recorder
 
                 var waveDecoder = new WaveDecoder(encoder.stream);
                 Signal raw = waveDecoder.Decode(waveDecoder.Frames);
-                Console.WriteLine("3");
 
                 enrollSignal = new AudioSignal
                 {
@@ -360,6 +359,7 @@ namespace Recorder
                 );
                 return;
             }
+            
             string userName = Interaction.InputBox(
                 "Enter the user name for enrollment:",
                 "Speaker Enrollment",
@@ -374,9 +374,8 @@ namespace Recorder
                 templates[userName] = new List<Sequence>();
 
             templates[userName].Add(seq);
-
+            //Console.WriteLine(templates.Keys.Count);
             MessageBox.Show($"User \"{userName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void loadTrain1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -387,9 +386,27 @@ namespace Recorder
             var hobba = TestcaseLoader.LoadTestcase2Training(fileDialog.FileName);
         }
 
-
-        
-
-
-     }
+        private void btnIdentify_Click(object sender, EventArgs e)
+        {
+            double minDistance = double.MaxValue;
+            string userName = "";
+            signal=AudioOperations.RemoveSilence(signal);
+            seq = AudioOperations.ExtractFeatures(signal);
+            foreach (var user in templates)
+            {
+                foreach (var template in user.Value)
+                {
+                    double distance = DTW.ComputeDTW(seq, template);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        userName = user.Key;
+                    }
+                }
+            }
+                MessageBox.Show($"Identified user: {userName}", "Identification Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            return;
+        }
+    }
 }
