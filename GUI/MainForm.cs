@@ -8,6 +8,11 @@ using Accord.DirectSound;
 using Accord.Audio.Filters;
 using Recorder.Recorder;
 using Recorder.MFCC;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using Accord.Audio;
+using Accord.Audio.Formats;
+using System.Collections.Generic;
 
 namespace Recorder
 {
@@ -32,7 +37,7 @@ namespace Recorder
         private Decoder decoder;
 
         private bool isRecorded;
-
+        private Dictionary<string, List<Sequence>> templates = new Dictionary<string, List<Sequence>>();
         public MainForm()
         {
             InitializeComponent();
@@ -308,6 +313,69 @@ namespace Recorder
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            AudioSignal enrollSignal = null;
+
+            if (!isRecorded && signal != null)
+            {
+                enrollSignal = signal;
+            }
+
+            else if (isRecorded && encoder != null)
+            {
+                encoder.stream.Seek(0, SeekOrigin.Begin);
+
+                var waveDecoder = new WaveDecoder(encoder.stream);
+                Signal raw = waveDecoder.Decode(waveDecoder.Frames);
+                Console.WriteLine("3");
+
+                enrollSignal = new AudioSignal
+                {
+                    sampleRate = waveDecoder.SampleRate,
+                    signalLengthInMilliSec = waveDecoder.Duration,
+                    data = new double[raw.Samples]
+                };
+                raw.CopyTo(enrollSignal.data);
+
+                enrollSignal = AudioOperations.RemoveSilence(enrollSignal);
+            }
+            if (enrollSignal == null)
+            {
+                MessageBox.Show(
+                    "No valid audio data found. Please record or open an audio file first.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            seq = AudioOperations.ExtractFeatures(enrollSignal);
+
+            if (seq == null || seq.Frames == null || seq.Frames.Length == 0)
+            {
+                MessageBox.Show(
+                    "Failed to extract features from the audio.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            string userName = Interaction.InputBox(
+                "Enter the user name for enrollment:",
+                "Speaker Enrollment",
+                ""
+            );
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                MessageBox.Show("User name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!templates.ContainsKey(userName))
+                templates[userName] = new List<Sequence>();
+
+            templates[userName].Add(seq);
+
+            MessageBox.Show($"User \"{userName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
