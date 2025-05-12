@@ -219,3 +219,27 @@ D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Sp
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.pdb
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.dll
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.exe.config
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.exe
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.pdb
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.Math.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\MWArray.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Newtonsoft.Json.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.DirectSound.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.Math.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\MWArray.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\NAudio.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Newtonsoft.Json.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.DirectSound.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.csproj.AssemblyReference.cache
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.MainForm.resources
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.Properties.Resources.resources
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.csproj.GenerateResource.cache
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.csproj.CoreCompileInputs.cache
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.csproj.Up2Date
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.exe
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.pdb

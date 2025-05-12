@@ -47,6 +47,60 @@ namespace Recorder
             updateButtons();
         }
 
+        private AudioSignal GetCurrentSignal()
+        {
+            WaveDecoder waveDecoder = new WaveDecoder(encoder.stream);
+            AudioSignal signal = new AudioSignal();
+            Signal raw = waveDecoder.Decode(waveDecoder.Frames);
+
+            signal = new AudioSignal
+            {
+                sampleRate = waveDecoder.SampleRate,
+                signalLengthInMilliSec = waveDecoder.Duration,
+                data = new double[raw.Samples]
+            };
+
+            raw.CopyTo(signal.data);
+            return signal;
+        }
+
+        private void UpdateSequence()
+        {
+            AudioSignal enrollSignal = null;
+
+            if (!isRecorded && signal != null)
+            {
+                enrollSignal = signal;
+                enrollSignal = AudioOperations.RemoveSilence(enrollSignal);
+            }
+            else if (isRecorded && encoder != null)
+            {
+                encoder.stream.Seek(0, SeekOrigin.Begin);
+                enrollSignal = AudioOperations.RemoveSilence(GetCurrentSignal());
+            }
+            if (enrollSignal == null)
+            {
+                MessageBox.Show(
+                    "No valid audio data found. Please record or open an audio file first.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            seq = AudioOperations.ExtractFeatures(enrollSignal);
+
+            if (seq == null || seq.Frames == null || seq.Frames.Length == 0)
+            {
+                MessageBox.Show(
+                    "Failed to extract features from the audio.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+        }
 
         /// <summary>
         ///   Starts recording audio from the sound card
@@ -96,9 +150,10 @@ namespace Recorder
         /// 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            Stop();   
+            Stop();
             updateButtons();
             updateWaveform(new float[BaseRecorder.FRAME_SIZE], BaseRecorder.FRAME_SIZE);
+            UpdateSequence();
         }
 
         /// <summary>
@@ -312,54 +367,6 @@ namespace Recorder
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AudioSignal enrollSignal = null;
-
-            if (!isRecorded && signal != null)
-            {
-                enrollSignal = signal;
-                enrollSignal = AudioOperations.RemoveSilence(enrollSignal);
-            }
-
-            else if (isRecorded && encoder != null)
-            {
-                encoder.stream.Seek(0, SeekOrigin.Begin);
-
-                var waveDecoder = new WaveDecoder(encoder.stream);
-                Signal raw = waveDecoder.Decode(waveDecoder.Frames);
-
-                enrollSignal = new AudioSignal
-                {
-                    sampleRate = waveDecoder.SampleRate,
-                    signalLengthInMilliSec = waveDecoder.Duration,
-                    data = new double[raw.Samples]
-                };
-                raw.CopyTo(enrollSignal.data);
-
-                enrollSignal = AudioOperations.RemoveSilence(enrollSignal);
-            }
-            if (enrollSignal == null)
-            {
-                MessageBox.Show(
-                    "No valid audio data found. Please record or open an audio file first.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
-            }
-            seq = AudioOperations.ExtractFeatures(enrollSignal);
-
-            if (seq == null || seq.Frames == null || seq.Frames.Length == 0)
-            {
-                MessageBox.Show(
-                    "Failed to extract features from the audio.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
-            }
-            
             string userName = Interaction.InputBox(
                 "Enter the user name for enrollment:",
                 "Speaker Enrollment",
@@ -390,8 +397,7 @@ namespace Recorder
         {
             double minDistance = double.MaxValue;
             string userName = "";
-            signal=AudioOperations.RemoveSilence(signal);
-            seq = AudioOperations.ExtractFeatures(signal);
+
             foreach (var user in templates)
             {
                 foreach (var template in user.Value)
