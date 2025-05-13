@@ -37,7 +37,6 @@ namespace Recorder
         private Decoder decoder;
 
         private bool isRecorded;
-        private Dictionary<string, List<Sequence>> templates = new Dictionary<string, List<Sequence>>();
         public MainForm()
         {
             InitializeComponent();
@@ -46,6 +45,7 @@ namespace Recorder
             chart.SimpleMode = true;
             chart.AddWaveform("wave", Color.Green, 1, false);
             updateButtons();
+            DBHandler.CreateTables();
         }
 
         private AudioSignal GetCurrentSignal()
@@ -378,12 +378,16 @@ namespace Recorder
                 MessageBox.Show("User name cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!templates.ContainsKey(userName))
-                templates[userName] = new List<Sequence>();
-
-            templates[userName].Add(seq);
-            //Console.WriteLine(templates.Keys.Count);
+            try
+            {
+            DBHandler.InsertUserAndAudio(userName, seq);
             MessageBox.Show($"User \"{userName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
 
         private void loadTrain1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -398,15 +402,12 @@ namespace Recorder
         {
             double minDistance = double.MaxValue;
             string userName = "";
-
+            var templates=DBHandler.GetAllAudioFiles();
             foreach (var user in templates)
             {
                 foreach (var template in user.Value)
                 {
                     double distance = DTW.ComputeDTWAndCalcTime(seq, template);
-                    //if (distance == double.MinValue)
-                    //    Console.WriteLine("DTW computation failed or timed out.");
-
                     if (distance < minDistance)
                     {
                         minDistance = distance;

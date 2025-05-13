@@ -195,30 +195,6 @@ D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Sp
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\[TEMPLATE] SpeakerID\obj\x86\Debug\Recorder.csproj.Up2Date
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\[TEMPLATE] SpeakerID\obj\x86\Debug\Recorder.exe
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\[TEMPLATE] SpeakerID\obj\x86\Debug\Recorder.pdb
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.exe.config
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.exe
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.pdb
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.Math.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\MWArray.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.DirectSound.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.Math.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\MWArray.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\NAudio.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.DirectSound.xml
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.AssemblyReference.cache
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.MainForm.resources
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.Properties.Resources.resources
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.GenerateResource.cache
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.CoreCompileInputs.cache
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.Up2Date
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.exe
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.pdb
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.dll
-D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.exe.config
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.exe
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Recorder.pdb
@@ -243,3 +219,42 @@ E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\De
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.csproj.Up2Date
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.exe
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Debug\Recorder.pdb
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.exe.config
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.exe
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Recorder.pdb
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.Math.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Dapper.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\EntityFramework.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\EntityFramework.SqlServer.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\MWArray.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.DirectSound.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Data.SQLite.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Data.SQLite.EF6.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Data.SQLite.Linq.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\AForge.Math.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Dapper.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\EntityFramework.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\EntityFramework.SqlServer.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\MWArray.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\Newtonsoft.Json.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\SharpDX.DirectSound.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Data.SQLite.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.AssemblyReference.cache
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.MainForm.resources
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.Properties.Resources.resources
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.GenerateResource.cache
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.CoreCompileInputs.cache
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.Up2Date
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.exe
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.pdb
