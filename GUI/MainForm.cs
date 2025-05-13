@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Accord.Audio;
 using Accord.Audio.Formats;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace Recorder
 {
     /// <summary>
@@ -402,7 +403,7 @@ namespace Recorder
             {
                 foreach (var template in user.Value)
                 {
-                    double distance = DTW.ComputeDTWAndCalcTime(seq, template, 3000);
+                    double distance = DTW.ComputeDTWAndCalcTime(seq, template);
                     //if (distance == double.MinValue)
                     //    Console.WriteLine("DTW computation failed or timed out.");
 
