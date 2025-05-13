@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\mainfuctions\\audiooperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:mainfuctions\\audiooperations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,28 +42,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainForm.cs",
               "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
               "RelativeDocumentMoniker": "GUI\\MainForm.cs",
               "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
               "RelativeToolTip": "GUI\\MainForm.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAiwJsAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAIoBAABAmJmZmZkpwJQBAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T20:06:21.364Z",
+              "WhenOpened": "2025-05-13T17:51:03.268Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AudioOperations.cs",
-              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\MainFuctions\\AudioOperations.cs",
-              "RelativeDocumentMoniker": "MainFuctions\\AudioOperations.cs",
-              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\MainFuctions\\AudioOperations.cs",
-              "RelativeToolTip": "MainFuctions\\AudioOperations.cs",
-              "ViewState": "AgIAABEAAAAAFDMzMzPjvxUAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "dtw.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
+              "RelativeDocumentMoniker": "dtw.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs*",
+              "RelativeToolTip": "dtw.cs*",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAwwH8AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T21:18:10.122Z",
+              "WhenOpened": "2025-05-13T17:46:04.518Z",
               "EditorCaption": ""
             }
           ]

@@ -29,7 +29,7 @@ namespace Recorder
         /// </summary>
         private AudioSignal signal = null;
         Sequence seq = null;
-       
+
         private string path;
 
         private Encoder encoder;
@@ -177,7 +177,7 @@ namespace Recorder
         {
             this.encoder.addNewFrame(eventArgs.Signal);
             updateWaveform(this.encoder.current, eventArgs.Signal.Length);
-       }
+        }
 
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace Recorder
                 //Open the selected audio file
                 signal = AudioOperations.OpenAudioFile(path);
                 signal = AudioOperations.RemoveSilence(signal);
-                 seq = AudioOperations.ExtractFeatures(signal);
+                seq = AudioOperations.ExtractFeatures(signal);
                 for (int i = 0; i < seq.Frames.Length; i++)
                 {
                     for (int j = 0; j < 13; j++)
@@ -402,7 +402,10 @@ namespace Recorder
             {
                 foreach (var template in user.Value)
                 {
-                    double distance = DTW.ComputeDTW(seq, template);
+                    double distance = DTW.ComputeDTWAndCalcTime(seq, template, 3000);
+                    //if (distance == double.MinValue)
+                    //    Console.WriteLine("DTW computation failed or timed out.");
+
                     if (distance < minDistance)
                     {
                         minDistance = distance;
@@ -410,8 +413,9 @@ namespace Recorder
                     }
                 }
             }
-                MessageBox.Show($"Identified user: {userName}", "Identification Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+
+            MessageBox.Show($"Identified user: {userName}", "Identification Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             return;
         }
     }
