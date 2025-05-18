@@ -47,6 +47,7 @@ namespace Recorder
             chart.AddWaveform("wave", Color.Green, 1, false);
             updateButtons();
             DBHandler.CreateTables();
+            //DBHandler.ResetTables();
         }
 
         private AudioSignal GetCurrentSignal()
@@ -475,21 +476,25 @@ namespace Recorder
 
             foreach (var user in templates)
             {
-                Console.WriteLine("User: " + user.Key.ToString());
-                foreach (var template in user.Value)
+                Console.WriteLine("User: " + user.Key);
+
+                float distance = TimingHelper.MeasureExecutionTimeAsync(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
+                Console.WriteLine("Distance: " + distance);
+
+                if (distance < minDistance)
                 {
-                    double distance = DTW.ComputeDTWAndCalcTime(seq, template);
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        userName = user.Key;
-                    }
+                    minDistance = distance;
+                    userName = user.Key;
                 }
             }
 
             MessageBox.Show($"Identified user: {userName}", "Identification Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

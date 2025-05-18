@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq;
 using System.Text;
 using Dapper;
 using Newtonsoft.Json;
@@ -33,6 +34,27 @@ namespace Recorder
             }
         }
 
+        public static void ResetTables()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    connection.Execute("DELETE FROM audio_file", transaction: transaction);
+                    connection.Execute("DELETE FROM user", transaction: transaction);
+
+                    transaction.Commit();
+                }
+
+                connection.Execute("VACUUM");
+            }
+
+            Console.WriteLine("All tables have been reset and database vacuumed.");
+        }
+
+
         public static void InsertUserAndAudio(string userName, Sequence features)
         {
             if (string.IsNullOrEmpty(userName) || features == null)
@@ -63,35 +85,57 @@ namespace Recorder
             }
         }
 
-
-        public static Dictionary<string, List<Sequence>> GetAllAudioFiles()
+        //public static Dictionary<string, List<Sequence>> GetAllAudioFiles()
+        public static List<KeyValuePair<string, Sequence>> GetAllAudioFiles()
         {
-            var result = new Dictionary<string, List<Sequence>>();
-
+            var result = new List<KeyValuePair<string, Sequence>>();
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                var records = connection.Query("SELECT user_name, features FROM audio_file");
+                var records = connection.Query("SELECT user_name, features FROM audio_file")
+                        .Select((record, index) => new { record, index })
+                        .ToList();
 
-                foreach (var record in records)
+                foreach (var item in records)
                 {
+                    var record = item.record;
+                    int i = item.index;
+
                     string userName = record.user_name;
                     byte[] featuresBytes = record.features;
                     string json = Encoding.UTF8.GetString(featuresBytes);
                     Sequence sequence = JsonConvert.DeserializeObject<Sequence>(json);
 
-                    if (!result.ContainsKey(userName))
-                        result[userName] = new List<Sequence>();
-
-                    result[userName].Add(sequence);
+                    result.Add(new KeyValuePair<string, Sequence>(userName, sequence));
                 }
             }
+            //var result = new Dictionary<string, List<Sequence>>();
+
+            //using (var connection = new SQLiteConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    var records = connection.Query("SELECT user_name, features FROM audio_file");
+
+            //    foreach (var record in records)
+            //    {
+            //        string userName = record.user_name;
+            //        byte[] featuresBytes = record.features;
+            //        string json = Encoding.UTF8.GetString(featuresBytes);
+            //        Sequence sequence = JsonConvert.DeserializeObject<Sequence>(json);
+
+            //        if (!result.ContainsKey(userName))
+            //            result[userName] = new List<Sequence>();
+
+            //        result[userName].Add(sequence);
+            //    }
+            //}
 
             return result;
         }
         public static void PrintUserSequenceCounts()
         {
             var userSequences = GetAllAudioFiles();
+            Dictionary<string, int> freqCounts = new Dictionary<string, int>();
 
             Console.WriteLine("---------------------------------");
             Console.WriteLine($"{"User Name",-20} | {"Sequence Count",15}");
@@ -99,8 +143,16 @@ namespace Recorder
 
             foreach (var kvp in userSequences)
             {
-                string userName = kvp.Key;
-                int count = kvp.Value.Count;
+                if (!freqCounts.ContainsKey(kvp.Key))
+                    freqCounts[kvp.Key] = 0;
+
+                freqCounts[kvp.Key]++;
+            }
+
+            foreach (var user in freqCounts)
+            {
+                string userName = user.Key;
+                int count = user.Value;
                 Console.WriteLine($"{userName,-20} | {count,15}");
             }
 

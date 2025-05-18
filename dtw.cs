@@ -24,14 +24,6 @@ namespace Recorder
             return (float)Math.Sqrt(sum);
         }
 
-
-
-        public static float ComputeDTWAndCalcTime(Sequence input, Sequence template, int timeOutInMillisec = 10000)
-        {
-            float result = TimingHelper.MeasureExecutionTimeAsync(() => ComputeDTW(input, template), "ComputeDTW");
-            Console.WriteLine("Distance: " + result);
-            return result;
-        }
         public static float ComputeDTW(Sequence input, Sequence template, int W = -1)
         {
             if (input == null || input.Frames == null || input.Frames.Length == 0 ||
@@ -58,14 +50,15 @@ namespace Recorder
                 for (int j = jStart; j <= jEnd; j++)
                 {
                     float cost = EuclideanDistance(input.Frames[i - 1], template.Frames[j - 1]);
-                    float minPrev = prev[j]; 
+                    float minPrev = prev[j];
                     if (j >= 2)
                         minPrev = Math.Min(minPrev, prev[j - 1]);
                     if (j >= 3)
                         minPrev = Math.Min(minPrev, prev[j - 2]);
                     curr[j] = cost + minPrev;
+                    //prev[j] = curr[j];
                 }
-                
+
                 float[] temp = prev;
                 prev = curr;
                 curr = temp;
