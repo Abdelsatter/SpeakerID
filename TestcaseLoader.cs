@@ -49,9 +49,8 @@ namespace Recorder
         //11 users. each user has ~10 medium sized training samples (with silent parts removed).
         static public List<User> LoadTestcase2Training(string trainingListFileName)
         {
-            Console.WriteLine("1\n");
             var originalDataset = LoadDataset(trainingListFileName);
-            Console.WriteLine("2\n");
+
             //shrinkage factor should be larger than 1.
             return ConcatenateSamples(originalDataset, 10);
         }
@@ -195,7 +194,6 @@ namespace Recorder
 
         static private List<User> ConcatenateSamples(List<User> dataset, int shrinkagefactor)
         {
-            Console.WriteLine("3\n");
             List<User> newDataset = new List<User>();
             foreach (User user in dataset)
             {
@@ -232,7 +230,6 @@ namespace Recorder
 
                 newDataset.Add(concUser);
             }
-            Console.WriteLine("4\n");
             return newDataset;
         }
     }

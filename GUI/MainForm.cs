@@ -14,6 +14,7 @@ using Accord.Audio;
 using Accord.Audio.Formats;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace Recorder
 {
     /// <summary>
@@ -394,10 +395,58 @@ namespace Recorder
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.ShowDialog();
+            var hobba = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
+            parllerUser(hobba);
+        }
+        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            var hobba2 = TestcaseLoader.LoadTestcase1Testing(fileDialog.FileName);
+        }
+        private void loadTrain2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
 
             var hobba = TestcaseLoader.LoadTestcase2Training(fileDialog.FileName);
-        }
+            parllerUser(hobba);
+            fileDialog.ShowDialog();
+            var hobba2 = TestcaseLoader.LoadTestcase2Testing(fileDialog.FileName);
 
+        }
+        private void loadTrain3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+
+            var hobba = TestcaseLoader.LoadTestcase3Training(fileDialog.FileName);
+            parllerUser(hobba);
+            fileDialog.ShowDialog();
+            var hobba2 = TestcaseLoader.LoadTestcase3Testing(fileDialog.FileName);
+
+        }
+        private void parllerUser(List<User> data)
+        {
+            Parallel.ForEach(data, user =>
+            {
+                Parallel.ForEach(user.UserTemplates, template =>
+                {
+                    Sequence mySeq = null;
+                    mySeq = AudioOperations.ExtractFeatures(template);
+                    try
+                    {
+                        DBHandler.InsertUserAndAudio(user.UserName, mySeq);
+                        MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
+            });
+            return;
+        }
         private void btnIdentify_Click(object sender, EventArgs e)
         {
             double minDistance = double.MaxValue;
@@ -420,5 +469,6 @@ namespace Recorder
 
             return;
         }
+
     }
 }

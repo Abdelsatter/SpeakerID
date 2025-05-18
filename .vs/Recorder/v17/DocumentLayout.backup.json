@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|d:\\corse\\semester6\\algorithms\\project\\[2] speaker identification\\startup code\\speaker identification startup code\\speakerid\\testcaseloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:testcaseloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|d:\\corse\\semester6\\algorithms\\project\\[2] speaker identification\\startup code\\speaker identification startup code\\speakerid\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\recorder\\baserecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:recorder\\baserecorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\recorder\\encoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:recorder\\encoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\recorder\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:recorder\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,50 +39,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Encoder.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\Encoder.cs",
-              "RelativeDocumentMoniker": "Recorder\\Encoder.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\Encoder.cs",
-              "RelativeToolTip": "Recorder\\Encoder.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAADwv1sAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:38:48.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Decoder.cs",
               "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\Decoder.cs",
               "RelativeDocumentMoniker": "Recorder\\Decoder.cs",
               "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\Decoder.cs",
               "RelativeToolTip": "Recorder\\Decoder.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAMwDUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:38:33.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BaseRecorder.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\BaseRecorder.cs",
-              "RelativeDocumentMoniker": "Recorder\\BaseRecorder.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\Recorder\\BaseRecorder.cs",
-              "RelativeToolTip": "Recorder\\BaseRecorder.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwB4AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:38:32.076Z"
+              "WhenOpened": "2025-05-14T11:57:23.194Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DBHandler.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\DBHandler.cs",
-              "RelativeDocumentMoniker": "DBHandler.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\DBHandler.cs",
-              "RelativeToolTip": "DBHandler.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwAkAAAANAAAAAAAAAA==",
+              "Title": "TestcaseLoader.cs",
+              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\TestcaseLoader.cs",
+              "RelativeDocumentMoniker": "TestcaseLoader.cs",
+              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\TestcaseLoader.cs",
+              "RelativeToolTip": "TestcaseLoader.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAtwJgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:23:28.08Z",
+              "WhenOpened": "2025-05-14T11:43:46.092Z",
               "EditorCaption": ""
             },
             {
@@ -101,22 +69,22 @@
               "RelativeDocumentMoniker": "GUI\\MainForm.cs",
               "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs",
               "RelativeToolTip": "GUI\\MainForm.cs",
-              "ViewState": "AgIAAJIBAAAAAAAAAAAAAJQBAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAIMBAAAAAAAAAAAgwJABAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T17:51:03.268Z",
+              "WhenOpened": "2025-05-13T20:51:35.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dtw.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\dtw.cs",
-              "RelativeDocumentMoniker": "dtw.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\dtw.cs",
-              "RelativeToolTip": "dtw.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowCsAAAATAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
+              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs [Design]",
+              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T17:46:04.518Z"
+              "WhenOpened": "2025-05-13T20:51:34.071Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
