@@ -397,7 +397,7 @@ namespace Recorder
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.ShowDialog();
             var hobba = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
-            parllerUser(hobba);
+            TimingHelper.ExecutionTime(() => ExtractFeaturesAndInsertIntoDB(hobba), "Extract Features and Insert into DB");
         }
         private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -411,7 +411,7 @@ namespace Recorder
             fileDialog.ShowDialog();
 
             var hobba = TestcaseLoader.LoadTestcase2Training(fileDialog.FileName);
-            parllerUser(hobba);
+            ExtractFeaturesAndInsertIntoDB(hobba);
             fileDialog.ShowDialog();
             var hobba2 = TestcaseLoader.LoadTestcase2Testing(fileDialog.FileName);
 
@@ -422,23 +422,22 @@ namespace Recorder
             fileDialog.ShowDialog();
 
             var hobba = TestcaseLoader.LoadTestcase3Training(fileDialog.FileName);
-            parllerUser(hobba);
+            ExtractFeaturesAndInsertIntoDB(hobba);
             fileDialog.ShowDialog();
             var hobba2 = TestcaseLoader.LoadTestcase3Testing(fileDialog.FileName);
 
         }
-        private void parllerUser(List<User> data)
+        private void ExtractFeaturesAndInsertIntoDB(List<User> data)
         {
             foreach (var user in data)
             {
                 foreach (var template in user.UserTemplates)
                 {
-                    Sequence mySeq = null;
-                    mySeq = AudioOperations.ExtractFeatures(template);
                     try
                     {
+                        Sequence mySeq = AudioOperations.ExtractFeatures(template);
                         DBHandler.InsertUserAndAudio(user.UserName, mySeq);
-                        MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
@@ -478,7 +477,7 @@ namespace Recorder
             {
                 Console.WriteLine("User: " + user.Key);
 
-                float distance = TimingHelper.MeasureExecutionTimeAsync(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
+                float distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
                 Console.WriteLine("Distance: " + distance);
 
                 if (distance < minDistance)
