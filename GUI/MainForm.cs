@@ -15,6 +15,8 @@ using Accord.Audio.Formats;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Linq;
 namespace Recorder
 {
     /// <summary>
@@ -397,6 +399,7 @@ namespace Recorder
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.ShowDialog();
             var hobba = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
+
             TimingHelper.ExecutionTime(() => ExtractFeaturesAndInsertIntoDB(hobba), "Extract Features and Insert into DB");
         }
         private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,6 +425,7 @@ namespace Recorder
             fileDialog.ShowDialog();
 
             var hobba = TestcaseLoader.LoadTestcase3Training(fileDialog.FileName);
+
             ExtractFeaturesAndInsertIntoDB(hobba);
             fileDialog.ShowDialog();
             var hobba2 = TestcaseLoader.LoadTestcase3Testing(fileDialog.FileName);
@@ -429,22 +433,25 @@ namespace Recorder
         }
         private void ExtractFeaturesAndInsertIntoDB(List<User> data)
         {
-            foreach (var user in data)
+            List<KeyValuePair<string, AudioSignal>> flatData = data
+                .SelectMany(user => user.UserTemplates.Select(template =>
+                    new KeyValuePair<string, AudioSignal>(user.UserName, template)))
+                .ToList();
+
+            Console.WriteLine($"Total samples: {flatData.Count}");
+            Parallel.ForEach(flatData, (user) =>
             {
-                foreach (var template in user.UserTemplates)
+                try
                 {
-                    try
-                    {
-                        Sequence mySeq = AudioOperations.ExtractFeatures(template);
-                        DBHandler.InsertUserAndAudio(user.UserName, mySeq);
-                        //MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Sequence mySeq = AudioOperations.ExtractFeatures(user.Value);
+                    //Sequence mySeq = TimingHelper.ExecutionTime(() => AudioOperations.ExtractFeatures(user.Value), $"Extract Features for {user.Key}");
+                    DBHandler.InsertUserAndAudio(user.Key, mySeq);
                 }
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            });
 
             //Parallel.ForEach(data, user =>
             //{
