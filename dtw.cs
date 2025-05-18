@@ -24,22 +24,11 @@ namespace Recorder
             return (float)Math.Sqrt(sum);
         }
 
+
+
         public static float ComputeDTWAndCalcTime(Sequence input, Sequence template, int timeOutInMillisec = 10000)
         {
-            float result = 0;
-            long elapsedTime = 0;
-            bool caseException = false;
-            bool caseTimedOut = true;
-
-            Stopwatch sw = new Stopwatch();
-
-            sw.Start();
-            result = ComputeDTW(input, template);
-            sw.Stop();
-
-            elapsedTime = sw.ElapsedMilliseconds;
-
-            Console.WriteLine("Elapsed time: " + elapsedTime + " ms");
+            float result = TimingHelper.MeasureExecutionTimeAsync(() => ComputeDTW(input, template), "ComputeDTW");
             Console.WriteLine("Distance: " + result);
             return result;
         }

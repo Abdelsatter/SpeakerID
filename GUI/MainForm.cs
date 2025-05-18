@@ -381,14 +381,14 @@ namespace Recorder
             }
             try
             {
-            DBHandler.InsertUserAndAudio(userName, seq);
-            MessageBox.Show($"User \"{userName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DBHandler.InsertUserAndAudio(userName, seq);
+                MessageBox.Show($"User \"{userName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
+
         }
 
         private void loadTrain1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -428,9 +428,9 @@ namespace Recorder
         }
         private void parllerUser(List<User> data)
         {
-            Parallel.ForEach(data, user =>
+            foreach (var user in data)
             {
-                Parallel.ForEach(user.UserTemplates, template =>
+                foreach (var template in user.UserTemplates)
                 {
                     Sequence mySeq = null;
                     mySeq = AudioOperations.ExtractFeatures(template);
@@ -443,17 +443,39 @@ namespace Recorder
                     {
                         MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                });
-            });
+                }
+            }
+
+            //Parallel.ForEach(data, user =>
+            //{
+            //    Parallel.ForEach(user.UserTemplates, template =>
+            //    {
+            //Sequence mySeq = null;
+            //mySeq = AudioOperations.ExtractFeatures(template);
+            //try
+            //{
+            //    DBHandler.InsertUserAndAudio(user.UserName, mySeq);
+            //    MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //    });
+            //});
             return;
         }
-        private void btnIdentify_Click(object sender, EventArgs e)
+        private void btnIdentify_ClickAsync(object sender, EventArgs e)
         {
             double minDistance = double.MaxValue;
             string userName = "";
-            var templates=DBHandler.GetAllAudioFiles();
+            var templates = DBHandler.GetAllAudioFiles();
+
+            DBHandler.PrintUserSequenceCounts();
+
             foreach (var user in templates)
             {
+                Console.WriteLine("User: " + user.Key.ToString());
                 foreach (var template in user.Value)
                 {
                     double distance = DTW.ComputeDTWAndCalcTime(seq, template);
@@ -469,6 +491,5 @@ namespace Recorder
 
             return;
         }
-
     }
 }

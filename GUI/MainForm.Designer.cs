@@ -245,7 +245,7 @@
             this.btnIdentify.TabIndex = 4;
             this.btnIdentify.Text = "s";
             this.btnIdentify.UseVisualStyleBackColor = true;
-            this.btnIdentify.Click += new System.EventHandler(this.btnIdentify_Click);
+            this.btnIdentify.Click += new System.EventHandler(this.btnIdentify_ClickAsync);
             // 
             // trackBar1
             // 

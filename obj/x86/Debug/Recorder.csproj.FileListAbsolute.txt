@@ -207,7 +207,6 @@ E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\AForge.Math.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\MWArray.xml
-E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\NAudio.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Newtonsoft.Json.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\SharpDX.DirectSound.xml
@@ -258,3 +257,19 @@ D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Sp
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.csproj.Up2Date
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.exe
 D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.pdb
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Dapper.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\EntityFramework.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Data.SQLite.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Data.SQLite.EF6.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Data.SQLite.Linq.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Dapper.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\EntityFramework.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Data.SQLite.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Threading.Tasks.Extensions.xml

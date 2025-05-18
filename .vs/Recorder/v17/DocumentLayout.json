@@ -1,13 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\",
+  "WorkspaceRootPath": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\timehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:timehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|d:\\corse\\semester6\\algorithms\\project\\[2] speaker identification\\startup code\\speaker identification startup code\\speakerid\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -18,8 +30,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs [Design]",
+              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T16:07:23.91Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TimeHelper.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\TimeHelper.cs",
+              "RelativeDocumentMoniker": "TimeHelper.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\TimeHelper.cs",
+              "RelativeToolTip": "TimeHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:40:33.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DTW.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
+              "RelativeDocumentMoniker": "dtw.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
+              "RelativeToolTip": "dtw.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAowB4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:36:27.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -30,27 +92,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.cs [Design]",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs",
-              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs [Design]",
-              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
+              "DocumentIndex": 3,
+              "Title": "DBHandler.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\DBHandler.cs",
+              "RelativeDocumentMoniker": "DBHandler.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\DBHandler.cs",
+              "RelativeToolTip": "DBHandler.cs",
+              "ViewState": "AgIAAFgAAAAAxMzMzMzsv2UAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T13:32:32.726Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-14T14:10:28.772Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainForm.cs",
-              "DocumentMoniker": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
               "RelativeDocumentMoniker": "GUI\\MainForm.cs",
-              "ToolTip": "D:\\corse\\Semester6\\Algorithms\\Project\\[2] SPEAKER IDENTIFICATION\\STARTUP CODE\\Speaker Identification Startup Code\\SpeakerID\\GUI\\MainForm.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
               "RelativeToolTip": "GUI\\MainForm.cs",
-              "ViewState": "AgIAAIoBAAAAAAAAAAAiwI0BAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAANEBAAAA08zMzMwewOMBAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T20:51:35.993Z",
+              "WhenOpened": "2025-05-14T12:21:32.978Z",
               "EditorCaption": ""
             }
           ]
