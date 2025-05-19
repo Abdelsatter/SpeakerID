@@ -404,7 +404,7 @@ namespace Recorder
             fileDialog.ShowDialog();
             var hobba = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
 
-            TimingHelper.ExecutionTime(() => ExtractFeaturesAndInsertIntoDB(hobba), "Extract Features and Insert into DB");
+            ExtractFeaturesAndInsertIntoDB(hobba);
         }
         private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -437,35 +437,40 @@ namespace Recorder
         }
         private void ExtractFeaturesAndInsertIntoDB(List<User> data)
         {
-            DataTable dt = new DataTable();
-            ConcurrentQueue<KeyValuePair<string, Sequence>> ExtractedFeaturesBag = new ConcurrentQueue<KeyValuePair<string, Sequence>>();
-            ConcurrentQueue<KeyValuePair<string, AudioSignal>> DataBag = new ConcurrentQueue<KeyValuePair<string, AudioSignal>>(
+            // ConcurrentBag -> Thread-safe collection unpredicted order (NO FIFO as we say in lectures)
+            // ConcurrentQueue -> Thread-safe collection only if order matters
+
+            ConcurrentBag<KeyValuePair<string, Sequence>> ExtractedFeaturesBag = new ConcurrentBag<KeyValuePair<string, Sequence>>();
+
+            List<KeyValuePair<string, AudioSignal>> DataBag = new List<KeyValuePair<string, AudioSignal>>(
                 data.SelectMany(user => user.UserTemplates.Select(template =>
                     new KeyValuePair<string, AudioSignal>(user.UserName, template))));
 
             Console.WriteLine($"DataBag.Count: {DataBag.Count}");
-            Parallel.ForEach(DataBag, new ParallelOptions()
+            TimingHelper.ExecutionTime(() =>
             {
-                MaxDegreeOfParallelism = Settings.Default.MaxDegreeOfParallelism
-            }, (user) =>
-            {
-                try
+                Parallel.ForEach(DataBag, new ParallelOptions()
                 {
-                    Sequence CurrentSequence = AudioOperations.ExtractFeatures(user.Value);
-                    ExtractedFeaturesBag.Enqueue(
-                        new KeyValuePair<string, Sequence>(user.Key, CurrentSequence)
-                    );
-                    Console.WriteLine($"Processing -> User: {user.Key} - {CurrentSequence.Frames.Length} frames");
-                }
-                catch (Exception ex)
+                    MaxDegreeOfParallelism = Settings.Default.MaxDegreeOfParallelism
+                }, (user) =>
                 {
-                    MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            });
+                    try
+                    {
+                        Sequence CurrentSequence = AudioOperations.ExtractFeatures(user.Value);
+                        ExtractedFeaturesBag.Add(
+                            new KeyValuePair<string, Sequence>(user.Key, CurrentSequence)
+                        );
+                        //Console.WriteLine($"Processing -> User: {user.Key} - {CurrentSequence.Frames.Length} frames");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
+            }, "Feature Extraction Time");
 
-            //Insert the DataBag_ExtractedFeatures into the DB
-            //DBHandler.InsertBulkUserAndAudio(DataBag_ExtractedFeatures);
-            return;
+            // Insert the ExtractedFeaturesBag into the DB
+            //DBHandler.InsertBulkUserAndAudio(ExtractedFeaturesBag);
         }
         private void btnIdentify_ClickAsync(object sender, EventArgs e)
         {
@@ -479,7 +484,7 @@ namespace Recorder
             {
                 Console.WriteLine("User: " + user.Key);
 
-                float distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
+                float distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value, 1111), "ComputeDTW");
                 Console.WriteLine("Distance: " + distance);
 
                 if (distance < minDistance)

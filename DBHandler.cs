@@ -54,7 +54,7 @@ namespace Recorder
             Console.WriteLine("All tables have been reset and database vacuumed.");
         }
 
-        public static void InsertBulkUserAndAudio(ConcurrentQueue<KeyValuePair<string, Sequence>> dataBag)
+        public static void InsertBulkUserAndAudio(ConcurrentBag<KeyValuePair<string, Sequence>> dataBag)
         {
             if (dataBag == null || dataBag.IsEmpty)
                 throw new ArgumentException("dataBag cannot be null or empty.");
@@ -64,7 +64,7 @@ namespace Recorder
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
                 {
-                    while (dataBag.TryDequeue(out var item))
+                    while (dataBag.TryTake(out var item))
                     {
                         string userName = item.Key;
                         Sequence features = item.Value;

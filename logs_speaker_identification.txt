@@ -1,0 +1,19 @@
+For Extraction Process And DB Insertion:
+- Time Before Optimization (Using Normal Nested ForEach Loops): ~10 minutes
+- Time After Flattening (Using One ForEach Loop): ~9.2 minutes
+- Time After Using Parallelism (Using Default Parameters of Parallel.ForEach): ~7.62 minutes
+
+Splitting Extraction Process and Insertion Process 
+as we have to make multiple connections and 
+this takes time also not logically correct using Concurrency
+
+For Extraction Process ONLY
+- Using Default Parameters: ~5.62 minutes
+- MaxDegreeOfParallelism = 6: ~5.85 minutes
+- MaxDegreeOfParallelism = 4: ~5.50 minutes
+
+Current Time = ~5.50 minutes (Needs Optimization = 1.50 min)
+
+W = MAX(W, 2*|rows – cols|)
+int jStart = Math.Max(1, i - W);
+int jEnd = Math.Min(M, i + W);
