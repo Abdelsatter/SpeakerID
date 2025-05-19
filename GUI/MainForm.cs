@@ -17,6 +17,10 @@ using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Linq;
+using System.Threading;
+using System.Collections.Concurrent;
+using Recorder.Properties;
+using System.Data;
 namespace Recorder
 {
     /// <summary>
@@ -433,19 +437,25 @@ namespace Recorder
         }
         private void ExtractFeaturesAndInsertIntoDB(List<User> data)
         {
-            List<KeyValuePair<string, AudioSignal>> flatData = data
-                .SelectMany(user => user.UserTemplates.Select(template =>
-                    new KeyValuePair<string, AudioSignal>(user.UserName, template)))
-                .ToList();
+            DataTable dt = new DataTable();
+            ConcurrentQueue<KeyValuePair<string, Sequence>> ExtractedFeaturesBag = new ConcurrentQueue<KeyValuePair<string, Sequence>>();
+            ConcurrentQueue<KeyValuePair<string, AudioSignal>> DataBag = new ConcurrentQueue<KeyValuePair<string, AudioSignal>>(
+                data.SelectMany(user => user.UserTemplates.Select(template =>
+                    new KeyValuePair<string, AudioSignal>(user.UserName, template))));
 
-            Console.WriteLine($"Total samples: {flatData.Count}");
-            Parallel.ForEach(flatData, (user) =>
+            Console.WriteLine($"DataBag.Count: {DataBag.Count}");
+            Parallel.ForEach(DataBag, new ParallelOptions()
+            {
+                MaxDegreeOfParallelism = Settings.Default.MaxDegreeOfParallelism
+            }, (user) =>
             {
                 try
                 {
-                    Sequence mySeq = AudioOperations.ExtractFeatures(user.Value);
-                    //Sequence mySeq = TimingHelper.ExecutionTime(() => AudioOperations.ExtractFeatures(user.Value), $"Extract Features for {user.Key}");
-                    DBHandler.InsertUserAndAudio(user.Key, mySeq);
+                    Sequence CurrentSequence = AudioOperations.ExtractFeatures(user.Value);
+                    ExtractedFeaturesBag.Enqueue(
+                        new KeyValuePair<string, Sequence>(user.Key, CurrentSequence)
+                    );
+                    Console.WriteLine($"Processing -> User: {user.Key} - {CurrentSequence.Frames.Length} frames");
                 }
                 catch (Exception ex)
                 {
@@ -453,23 +463,8 @@ namespace Recorder
                 }
             });
 
-            //Parallel.ForEach(data, user =>
-            //{
-            //    Parallel.ForEach(user.UserTemplates, template =>
-            //    {
-            //Sequence mySeq = null;
-            //mySeq = AudioOperations.ExtractFeatures(template);
-            //try
-            //{
-            //    DBHandler.InsertUserAndAudio(user.UserName, mySeq);
-            //    MessageBox.Show($"User \"{user.UserName}\" has been enrolled successfully.", "Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //    });
-            //});
+            //Insert the DataBag_ExtractedFeatures into the DB
+            //DBHandler.InsertBulkUserAndAudio(DataBag_ExtractedFeatures);
             return;
         }
         private void btnIdentify_ClickAsync(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace Recorder
             features BLOB,
             FOREIGN KEY (user_name) REFERENCES user(name)
         )";
-
 
         public static void CreateTables()
         {
@@ -52,6 +52,45 @@ namespace Recorder
             }
 
             Console.WriteLine("All tables have been reset and database vacuumed.");
+        }
+
+        public static void InsertBulkUserAndAudio(ConcurrentQueue<KeyValuePair<string, Sequence>> dataBag)
+        {
+            if (dataBag == null || dataBag.IsEmpty)
+                throw new ArgumentException("dataBag cannot be null or empty.");
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    while (dataBag.TryDequeue(out var item))
+                    {
+                        string userName = item.Key;
+                        Sequence features = item.Value;
+
+                        if (string.IsNullOrEmpty(userName) || features == null)
+                            continue; // skip invalid data
+
+                        string serializedFeatures = JsonConvert.SerializeObject(features);
+                        byte[] featuresBytes = Encoding.UTF8.GetBytes(serializedFeatures);
+
+                        connection.Execute(
+                            "INSERT OR IGNORE INTO user (name) VALUES (@Name)",
+                            new { Name = userName },
+                            transaction
+                        );
+
+                        connection.Execute(
+                            "INSERT INTO audio_file (user_name, features) VALUES (@UserName, @Features)",
+                            new { UserName = userName, Features = featuresBytes },
+                            transaction
+                        );
+                    }
+
+                    transaction.Commit();
+                }
+            }
         }
 
 
@@ -85,7 +124,6 @@ namespace Recorder
             }
         }
 
-        //public static Dictionary<string, List<Sequence>> GetAllAudioFiles()
         public static List<KeyValuePair<string, Sequence>> GetAllAudioFiles()
         {
             var result = new List<KeyValuePair<string, Sequence>>();
@@ -109,29 +147,10 @@ namespace Recorder
                     result.Add(new KeyValuePair<string, Sequence>(userName, sequence));
                 }
             }
-            //var result = new Dictionary<string, List<Sequence>>();
-
-            //using (var connection = new SQLiteConnection(connectionString))
-            //{
-            //    connection.Open();
-            //    var records = connection.Query("SELECT user_name, features FROM audio_file");
-
-            //    foreach (var record in records)
-            //    {
-            //        string userName = record.user_name;
-            //        byte[] featuresBytes = record.features;
-            //        string json = Encoding.UTF8.GetString(featuresBytes);
-            //        Sequence sequence = JsonConvert.DeserializeObject<Sequence>(json);
-
-            //        if (!result.ContainsKey(userName))
-            //            result[userName] = new List<Sequence>();
-
-            //        result[userName].Add(sequence);
-            //    }
-            //}
 
             return result;
         }
+
         public static void PrintUserSequenceCounts()
         {
             var userSequences = GetAllAudioFiles();
@@ -155,9 +174,7 @@ namespace Recorder
                 int count = user.Value;
                 Console.WriteLine($"{userName,-20} | {count,15}");
             }
-
             Console.WriteLine("---------------------------------");
         }
-
     }
 }

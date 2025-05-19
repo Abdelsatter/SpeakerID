@@ -1,0 +1,5 @@
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Release\Recorder.csproj.AssemblyReference.cache
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Release\Recorder.MainForm.resources
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Release\Recorder.Properties.Resources.resources
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Release\Recorder.csproj.GenerateResource.cache
+E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\obj\x86\Release\Recorder.csproj.CoreCompileInputs.cache
