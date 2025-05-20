@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dbhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:dtw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\logs_speaker_identification.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:logs_speaker_identification.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|e:\\applications\\ain shams\\year 3\\term 2\\algorithms\\project\\repository\\gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A3C56C4A-57FC-48A4-A45A-DA12304D06A9}|Recorder.csproj|solutionrelative:gui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DBHandler.cs",
-              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\DBHandler.cs",
-              "RelativeDocumentMoniker": "DBHandler.cs",
-              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\DBHandler.cs",
-              "RelativeToolTip": "DBHandler.cs",
-              "ViewState": "AgIAAC8AAACAZGZmZmYOwDQAAAAAAAAAAAAAAA==",
+              "Title": "DTW.cs",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
+              "RelativeDocumentMoniker": "dtw.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
+              "RelativeToolTip": "dtw.cs",
+              "ViewState": "AgIAAFgAAABAzczMzMwcwGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T21:07:48.412Z",
+              "WhenOpened": "2025-05-20T20:30:25.019Z",
               "EditorCaption": ""
             },
             {
@@ -64,14 +68,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DTW.cs",
-              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
-              "RelativeDocumentMoniker": "dtw.cs",
-              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\dtw.cs",
-              "RelativeToolTip": "dtw.cs",
-              "ViewState": "AgIAAAsAAADgLzMzMzMbwC8AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T19:16:13.743Z",
+              "Title": "logs_speaker_identification.txt",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\logs_speaker_identification.txt",
+              "RelativeDocumentMoniker": "logs_speaker_identification.txt",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\logs_speaker_identification.txt",
+              "RelativeToolTip": "logs_speaker_identification.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-20T19:02:25.447Z",
               "EditorCaption": ""
             },
             {
@@ -82,10 +86,22 @@
               "RelativeDocumentMoniker": "GUI\\MainForm.cs",
               "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
               "RelativeToolTip": "GUI\\MainForm.cs",
-              "ViewState": "AgIAACkAAAAApJmZmZkdwDcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAL8BAADAjJmZmRkmwMcBAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T16:02:32.269Z",
+              "WhenOpened": "2025-05-20T18:53:18.85Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs",
+              "RelativeDocumentMoniker": "GUI\\MainForm.cs",
+              "ToolTip": "E:\\Applications\\Ain Shams\\Year 3\\Term 2\\Algorithms\\Project\\Repository\\GUI\\MainForm.cs [Design]",
+              "RelativeToolTip": "GUI\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T18:53:16.788Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

@@ -14,13 +14,12 @@ namespace Recorder
     {
         private static float EuclideanDistance(MFCCFrame frame1, MFCCFrame frame2)
         {
-            float sum = 0.0F;
+            float sum = 0.0f; // Use double for precision
             for (int k = 0; k < 13; k++)
             {
-                double diff = frame1.Features[k] - frame2.Features[k];
-                sum += (float)(diff * diff);
+                float diff = (float)(frame1.Features[k] - frame2.Features[k]);
+                sum += diff * diff;
             }
-
             return (float)Math.Sqrt(sum);
         }
 
@@ -30,40 +29,68 @@ namespace Recorder
                 template == null || template.Frames == null || template.Frames.Length == 0)
                 throw new ArgumentException("Input and template sequences must be non-empty.");
 
-            int N = input.Frames.Length, M = template.Frames.Length;
+            int N = input.Frames.Length;
+            int M = template.Frames.Length;
 
-            float[] prev = new float[M + 1], curr = new float[M + 1];
-
-            if (W == -1) W = Math.Abs(N - M);
-            else W = Math.Max(W, Math.Abs(N - M));
-
-            for (int j = 2; j <= M; j++) prev[j] = float.PositiveInfinity;
-            prev[1] = EuclideanDistance(input.Frames[0], template.Frames[0]);
-
-            for (int i = 2; i <= N; i++)
+            // Adjust window size
+            if (W != -1)
             {
-                for (int j = 1; j <= M; j++) curr[j] = float.PositiveInfinity;
+                W = Math.Max(W, 2 * Math.Abs(N - M));
+                Console.WriteLine($"Adjusted W: {W}");
+            }
 
-                int jStart = Math.Max(1, i - W);
-                int jEnd = Math.Min(M, i + W);
+            // Initialize arrays
+            float[] prev = new float[M + 1];
+            float[] curr = new float[M + 1];
+            for (int j = 0; j <= M; j++)
+            {
+                prev[j] = float.PositiveInfinity;
+                curr[j] = float.PositiveInfinity;
+            }
 
+            prev[0] = 0.0f;
+            if (M >= 1)
+            {
+                prev[1] = EuclideanDistance(input.Frames[0], template.Frames[0]);
+            }
+
+            // Main DTW loop
+            for (int i = 1; i <= N; i++)
+            {
+                int jStart = W == -1 ? 1 : Math.Max(1, i - W / 2);
+                int jEnd = W == -1 ? M : Math.Min(M, i + W / 2);
+
+                // Reset curr array
+                for (int j = 0; j <= M; j++)
+                {
+                    curr[j] = float.PositiveInfinity;
+                }
+
+                // Compute DTW costs
                 for (int j = jStart; j <= jEnd; j++)
                 {
                     float cost = EuclideanDistance(input.Frames[i - 1], template.Frames[j - 1]);
-                    float minTransitoin = prev[j];
+                    float minTransition = prev[j]; // (i-1, j)
+                    if (j >= 1)
+                        minTransition = Math.Min(minTransition, prev[j - 1]); // (i-1, j-1)
+                    if (j >= 2)
+                        minTransition = Math.Min(minTransition, prev[j - 2]); // (i-1, j-2)
 
-                    if (j >= 2) minTransitoin = Math.Min(minTransitoin, prev[j - 1]);
-                    if (j >= 3) minTransitoin = Math.Min(minTransitoin, prev[j - 2]);
-
-                    curr[j] = cost + minTransitoin;
+                    curr[j] = cost + minTransition;
                 }
 
+                // Log for debugging
+                //Console.WriteLine($"i={i}, jStart={jStart}, jEnd={jEnd}, curr[M]={curr[M]}");
+
+                // Swap arrays
                 var tmp = prev;
                 prev = curr;
                 curr = tmp;
             }
 
-            return prev[M];
+            float result = prev[M];
+            //Console.WriteLine($"Final DTW Distance: {result}");
+            return result;
         }
 
         //public static float ComputeDTW(Sequence input, Sequence template, int W = -1)

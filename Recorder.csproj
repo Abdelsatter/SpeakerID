@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="framework.ico" />
+    <Content Include="logs_speaker_identification.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

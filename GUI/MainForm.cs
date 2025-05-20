@@ -21,6 +21,7 @@ using System.Threading;
 using System.Collections.Concurrent;
 using Recorder.Properties;
 using System.Data;
+using System.Collections;
 namespace Recorder
 {
     /// <summary>
@@ -435,42 +436,35 @@ namespace Recorder
             var hobba2 = TestcaseLoader.LoadTestcase3Testing(fileDialog.FileName);
 
         }
+
+        private KeyValuePair<string, Sequence> HeavyComputation(KeyValuePair<string, AudioSignal> user)
+        {
+            Sequence currentSequence = AudioOperations.ExtractFeatures(user.Value);
+            return new KeyValuePair<string, Sequence>(user.Key, currentSequence);
+        }
+
+
         private void ExtractFeaturesAndInsertIntoDB(List<User> data)
         {
             // ConcurrentBag -> Thread-safe collection unpredicted order (NO FIFO as we say in lectures)
             // ConcurrentQueue -> Thread-safe collection only if order matters
 
-            ConcurrentBag<KeyValuePair<string, Sequence>> ExtractedFeaturesBag = new ConcurrentBag<KeyValuePair<string, Sequence>>();
+            KeyValuePair<string, AudioSignal>[] DataBag = data.SelectMany(user =>
+                user.UserTemplates.Select(template =>
+                    new KeyValuePair<string, AudioSignal>(user.UserName, template)
+                )
+            ).ToArray();
 
-            List<KeyValuePair<string, AudioSignal>> DataBag = new List<KeyValuePair<string, AudioSignal>>(
-                data.SelectMany(user => user.UserTemplates.Select(template =>
-                    new KeyValuePair<string, AudioSignal>(user.UserName, template))));
+            KeyValuePair<string, Sequence>[] ExtractedFeatures = new KeyValuePair<string, Sequence>[DataBag.Length];
 
-            Console.WriteLine($"DataBag.Count: {DataBag.Count}");
+            Console.WriteLine($"Samples Count: {DataBag.Length}");
             TimingHelper.ExecutionTime(() =>
             {
-                Parallel.ForEach(DataBag, new ParallelOptions()
-                {
-                    MaxDegreeOfParallelism = Settings.Default.MaxDegreeOfParallelism
-                }, (user) =>
-                {
-                    try
-                    {
-                        Sequence CurrentSequence = AudioOperations.ExtractFeatures(user.Value);
-                        ExtractedFeaturesBag.Add(
-                            new KeyValuePair<string, Sequence>(user.Key, CurrentSequence)
-                        );
-                        //Console.WriteLine($"Processing -> User: {user.Key} - {CurrentSequence.Frames.Length} frames");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error enrolling user: {ex.Message}", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                });
+                for (short i = 0; i < DataBag.Length; i++) ExtractedFeatures[i] = HeavyComputation(DataBag[i]);
             }, "Feature Extraction Time");
 
-            // Insert the ExtractedFeaturesBag into the DB
-            //DBHandler.InsertBulkUserAndAudio(ExtractedFeaturesBag);
+            // Insert the ExtractedFeatures into the DB
+            //DBHandler.InsertBulkUserAndAudio(ExtractedFeatures);
         }
         private void btnIdentify_ClickAsync(object sender, EventArgs e)
         {
