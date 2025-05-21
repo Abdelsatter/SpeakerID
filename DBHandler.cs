@@ -50,13 +50,11 @@ namespace Recorder
 
                 connection.Execute("VACUUM");
             }
-
-            Console.WriteLine("All tables have been reset and database vacuumed.");
         }
 
-        public static void InsertBulkUserAndAudio(ConcurrentBag<KeyValuePair<string, Sequence>> dataBag)
+        public static void InsertBulkUserAndAudio(KeyValuePair<string, Sequence>[] dataBag)
         {
-            if (dataBag == null || dataBag.IsEmpty)
+            if (dataBag == null || dataBag.Length == 0)
                 throw new ArgumentException("dataBag cannot be null or empty.");
 
             using (var connection = new SQLiteConnection(connectionString))
@@ -64,35 +62,39 @@ namespace Recorder
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
                 {
-                    while (dataBag.TryTake(out var item))
-                    {
-                        string userName = item.Key;
-                        Sequence features = item.Value;
+                    var validItems = dataBag
+                        .Where(item => !string.IsNullOrEmpty(item.Key) && item.Value != null)
+                        .ToList();
 
-                        if (string.IsNullOrEmpty(userName) || features == null)
-                            continue; // skip invalid data
+                    var distinctUsers = validItems
+                        .Select(item => new { Name = item.Key })
+                        .Distinct()
+                        .ToList();
 
-                        string serializedFeatures = JsonConvert.SerializeObject(features);
-                        byte[] featuresBytes = Encoding.UTF8.GetBytes(serializedFeatures);
+                    connection.Execute(
+                        "INSERT OR IGNORE INTO user (name) VALUES (@Name);",
+                        distinctUsers,
+                        transaction
+                    );
 
-                        connection.Execute(
-                            "INSERT OR IGNORE INTO user (name) VALUES (@Name)",
-                            new { Name = userName },
-                            transaction
-                        );
+                    var audioFileData = validItems
+                        .Select(item => new
+                        {
+                            UserName = item.Key,
+                            Features = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(item.Value))
+                        })
+                        .ToList();
 
-                        connection.Execute(
-                            "INSERT INTO audio_file (user_name, features) VALUES (@UserName, @Features)",
-                            new { UserName = userName, Features = featuresBytes },
-                            transaction
-                        );
-                    }
+                    connection.Execute(
+                        "INSERT INTO audio_file (user_name, features) VALUES (@UserName, @Features);",
+                        audioFileData,
+                        transaction
+                    );
 
                     transaction.Commit();
                 }
             }
         }
-
 
         public static void InsertUserAndAudio(string userName, Sequence features)
         {

@@ -4,24 +4,15 @@ using System.IO;
 using System.Windows.Forms;
 using Accord.Audio;
 using Accord.Audio.Formats;
-using Accord.DirectSound;
-using Accord.Audio.Filters;
 using Recorder.Recorder;
 using Recorder.MFCC;
 using Microsoft.VisualBasic;
-using Newtonsoft.Json;
-using Accord.Audio;
-using Accord.Audio.Formats;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using Microsoft.VisualBasic.ApplicationServices;
 using System.Linq;
-using System.Threading;
-using System.Collections.Concurrent;
-using Recorder.Properties;
 using System.Data;
-using System.Collections;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
+
 namespace Recorder
 {
     /// <summary>
@@ -54,7 +45,6 @@ namespace Recorder
             chart.AddWaveform("wave", Color.Green, 1, false);
             updateButtons();
             //DBHandler.CreateTables();
-            //DBHandler.ResetTables();
         }
 
         private AudioSignal GetCurrentSignal()
@@ -402,54 +392,87 @@ namespace Recorder
 
         private void loadTrain1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Load ll train data
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
-            var hobba = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
 
-            ExtractFeaturesAndInsertIntoDB(hobba);
+            if (match_current_train_chkb.Checked == false) {
+                fileDialog.ShowDialog();
+
+                KeyValuePair<string, Sequence>[] ExtractedFeatures = TimingHelper.ExecutionTime(() =>
+                {
+                    List<User> TrainingData = TestcaseLoader.LoadTestcase1Training(fileDialog.FileName);
+
+                    // Extract features of train data and insert fi el database
+                    return FlattenDataAndExtractFeatures(TrainingData);
+                }, "Load & Extract Features of Train Set");
+
+                DBHandler.InsertBulkUserAndAudio(ExtractedFeatures);
+            }
+
+            // Load ll test data
+            fileDialog.ShowDialog();
+            Form1 form = new Form1((int W) =>
+            {
+                Tuple<List<User>, List<string>> result = TimingHelper.ExecutionTime(() =>
+                {
+                    List<User> data = TestcaseLoader.LoadTestcase1Testing(fileDialog.FileName);
+                    // Compare between test data and train data and get accuracy.
+                    List<string> predicted = CompareTrainingWithTesting(data, W);
+
+                    return Tuple.Create(data, predicted);
+                }, "Load, Extract Features & Match of Test Set");
+
+                double accuracy = TestcaseLoader.CheckTestcaseAccuracy(result.Item1, result.Item2);
+                MessageBox.Show($"Accuracy: {(100 - (accuracy * 100)):F2}%", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            });
+
+            form.Show();
         }
-        private void test1ToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private List<string> CompareTrainingWithTesting(List<User> data, int W = -1)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
-            var hobba2 = TestcaseLoader.LoadTestcase1Testing(fileDialog.FileName);
+            // This function compares training data with testing data and gives us the accuracy
+            // compare one (or more) of the testing samples with all 
+
+            List<KeyValuePair<string, Sequence>> TrainingData = DBHandler.GetAllAudioFiles();
+            if (TrainingData.Count == 0)
+                throw new Exception("No Train data please provide the training data through: Edit -> Load Train1");
+
+            KeyValuePair<string, Sequence>[] TestingData = FlattenDataAndExtractFeatures(data);
+            string[] predicted = new string[TestingData.Length];
+
+            Parallel.For(0, TestingData.Length, i =>
+            {
+                var testSample = TestingData[i];
+                Sequence testFeatures = testSample.Value;
+
+                string user = null;
+                double minDistance = double.MaxValue;
+
+                foreach (var trainSample in TrainingData)
+                {
+                    double distance = DTW.ComputeDTW(testFeatures, trainSample.Value, W);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        user = trainSample.Key;
+                    }
+                }
+
+                predicted[i] = user;
+            });
+
+            return predicted.ToList();
         }
-        private void loadTrain2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
 
-            var hobba = TestcaseLoader.LoadTestcase2Training(fileDialog.FileName);
-            ExtractFeaturesAndInsertIntoDB(hobba);
-            fileDialog.ShowDialog();
-            var hobba2 = TestcaseLoader.LoadTestcase2Testing(fileDialog.FileName);
-
-        }
-        private void loadTrain3ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.ShowDialog();
-
-            var hobba = TestcaseLoader.LoadTestcase3Training(fileDialog.FileName);
-
-            ExtractFeaturesAndInsertIntoDB(hobba);
-            fileDialog.ShowDialog();
-            var hobba2 = TestcaseLoader.LoadTestcase3Testing(fileDialog.FileName);
-
-        }
-
-        private KeyValuePair<string, Sequence> HeavyComputation(KeyValuePair<string, AudioSignal> user)
+        private KeyValuePair<string, Sequence> ExtractFeaturesOfData(KeyValuePair<string, AudioSignal> user)
         {
             Sequence currentSequence = AudioOperations.ExtractFeatures(user.Value);
             return new KeyValuePair<string, Sequence>(user.Key, currentSequence);
         }
 
-
-        private void ExtractFeaturesAndInsertIntoDB(List<User> data)
+        private KeyValuePair<string, Sequence>[] FlattenDataAndExtractFeatures(List<User> data)
         {
-            // ConcurrentBag -> Thread-safe collection unpredicted order (NO FIFO as we say in lectures)
-            // ConcurrentQueue -> Thread-safe collection only if order matters
-
             KeyValuePair<string, AudioSignal>[] DataBag = data.SelectMany(user =>
                 user.UserTemplates.Select(template =>
                     new KeyValuePair<string, AudioSignal>(user.UserName, template)
@@ -459,14 +482,25 @@ namespace Recorder
             KeyValuePair<string, Sequence>[] ExtractedFeatures = new KeyValuePair<string, Sequence>[DataBag.Length];
 
             Console.WriteLine($"Samples Count: {DataBag.Length}");
-            TimingHelper.ExecutionTime(() =>
-            {
-                for (short i = 0; i < DataBag.Length; i++) ExtractedFeatures[i] = HeavyComputation(DataBag[i]);
-            }, "Feature Extraction Time");
 
-            // Insert the ExtractedFeatures into the DB
-            //DBHandler.InsertBulkUserAndAudio(ExtractedFeatures);
+            //var partitioner = Partitioner.Create(0, DataBag.Length);
+            //Parallel.ForEach(partitioner, range =>
+            //{
+            //    for (int i = range.Item1; i < range.Item2; i++)
+            //        ExtractedFeatures[i] = ExtractFeaturesOfData(DataBag[i]);
+            //});
+
+            //Parallel.For(0, DataBag.Length, i =>
+            //    ExtractedFeatures[i] = ExtractFeaturesOfData(DataBag[i])
+            //);
+
+            // only one thread can enter the critical section of MATLAB function at a time.
+            for (int i = 0; i < DataBag.Length; i++) ExtractedFeatures[i] = ExtractFeaturesOfData(DataBag[i]);
+
+            return ExtractedFeatures;
         }
+
+
         private void Identify(int w)
         {
             double minDistance = double.MaxValue;
@@ -478,16 +512,14 @@ namespace Recorder
             foreach (var user in templates)
             {
                 Console.WriteLine("User: " + user.Key);
+
                 if (w == -1)
-                {
-                     distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
-                    Console.WriteLine("Distance: " + distance);
-                }
+                    distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
                 else
-                {
                     distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value, w), "ComputeDTW");
-                    Console.WriteLine("Distance: " + distance);
-                }
+
+                Console.WriteLine("Distance: " + distance);
+
                 if (distance < minDistance)
                 {
                     minDistance = distance;
@@ -503,11 +535,17 @@ namespace Recorder
         {
             Form1 form1 = new Form1(Identify);
             form1.Show();
-            
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+        }
+
+        private void reset_tbl_btn_Click(object sender, EventArgs e)
+        {
+            DBHandler.ResetTables();
+            MessageBox.Show("Tables were resetted properly.", "Database Reset", MessageBoxButtons.OK);
         }
     }
 }

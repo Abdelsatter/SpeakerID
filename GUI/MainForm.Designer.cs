@@ -40,9 +40,6 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadTrain1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadTrain2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadTrain3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnRecord = new System.Windows.Forms.Button();
@@ -55,6 +52,8 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.match_current_train_chkb = new System.Windows.Forms.CheckBox();
+            this.reset_tbl_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -67,8 +66,8 @@
             this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(414, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(331, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -80,73 +79,49 @@
             this.toolStripSeparator1,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(125, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadTrain1ToolStripMenuItem,
-            this.loadTrain2ToolStripMenuItem,
-            this.loadTrain3ToolStripMenuItem,
-            this.test1ToolStripMenuItem});
+            this.loadTrain1ToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.optionsToolStripMenuItem.Text = "Edit";
             // 
             // loadTrain1ToolStripMenuItem
             // 
             this.loadTrain1ToolStripMenuItem.Name = "loadTrain1ToolStripMenuItem";
-            this.loadTrain1ToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.loadTrain1ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.loadTrain1ToolStripMenuItem.Text = "Load Train1";
             this.loadTrain1ToolStripMenuItem.Click += new System.EventHandler(this.loadTrain1ToolStripMenuItem_Click);
-            // 
-            // loadTrain2ToolStripMenuItem
-            // 
-            this.loadTrain2ToolStripMenuItem.Name = "loadTrain2ToolStripMenuItem";
-            this.loadTrain2ToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.loadTrain2ToolStripMenuItem.Text = "Load Train2";
-            this.loadTrain2ToolStripMenuItem.Click += new System.EventHandler(this.loadTrain2ToolStripMenuItem_Click);
-            // 
-            // loadTrain3ToolStripMenuItem
-            // 
-            this.loadTrain3ToolStripMenuItem.Name = "loadTrain3ToolStripMenuItem";
-            this.loadTrain3ToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.loadTrain3ToolStripMenuItem.Text = "Load Train3";
-            this.loadTrain3ToolStripMenuItem.Click += new System.EventHandler(this.loadTrain3ToolStripMenuItem_Click);
-            // 
-            // test1ToolStripMenuItem
-            // 
-            this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
-            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
-            this.test1ToolStripMenuItem.Text = "Test1";
-            this.test1ToolStripMenuItem.Click += new System.EventHandler(this.test1ToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -157,10 +132,9 @@
             // 
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStop.Font = new System.Drawing.Font("Webdings", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnStop.Location = new System.Drawing.Point(168, 134);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStop.Location = new System.Drawing.Point(134, 107);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(69, 38);
+            this.btnStop.Size = new System.Drawing.Size(55, 30);
             this.btnStop.TabIndex = 4;
             this.btnStop.Text = "<";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -170,10 +144,9 @@
             // 
             this.btnRecord.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRecord.Font = new System.Drawing.Font("Webdings", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnRecord.Location = new System.Drawing.Point(320, 134);
-            this.btnRecord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRecord.Location = new System.Drawing.Point(256, 107);
             this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(69, 38);
+            this.btnRecord.Size = new System.Drawing.Size(55, 30);
             this.btnRecord.TabIndex = 4;
             this.btnRecord.Text = "=";
             this.btnRecord.UseVisualStyleBackColor = true;
@@ -183,23 +156,21 @@
             // 
             this.chart.BackColor = System.Drawing.Color.Black;
             this.chart.ForeColor = System.Drawing.Color.DarkGreen;
-            this.chart.Location = new System.Drawing.Point(112, 34);
-            this.chart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart.Location = new System.Drawing.Point(90, 27);
             this.chart.Name = "chart";
             this.chart.RangeX = ((AForge.DoubleRange)(resources.GetObject("chart.RangeX")));
             this.chart.RangeY = ((AForge.DoubleRange)(resources.GetObject("chart.RangeY")));
             this.chart.SimpleMode = false;
-            this.chart.Size = new System.Drawing.Size(179, 51);
+            this.chart.Size = new System.Drawing.Size(143, 41);
             this.chart.TabIndex = 6;
             this.chart.Text = "chart1";
             // 
             // lbPosition
             // 
             this.lbPosition.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbPosition.Location = new System.Drawing.Point(15, 34);
-            this.lbPosition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbPosition.Location = new System.Drawing.Point(12, 27);
             this.lbPosition.Name = "lbPosition";
-            this.lbPosition.Size = new System.Drawing.Size(90, 51);
+            this.lbPosition.Size = new System.Drawing.Size(72, 41);
             this.lbPosition.TabIndex = 7;
             this.lbPosition.Text = "Position: 00.00 sec.";
             this.lbPosition.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,10 +178,9 @@
             // lbLength
             // 
             this.lbLength.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbLength.Location = new System.Drawing.Point(299, 34);
-            this.lbLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbLength.Location = new System.Drawing.Point(239, 27);
             this.lbLength.Name = "lbLength";
-            this.lbLength.Size = new System.Drawing.Size(90, 51);
+            this.lbLength.Size = new System.Drawing.Size(72, 41);
             this.lbLength.TabIndex = 7;
             this.lbLength.Text = "Length: 00.00 sec.";
             this.lbLength.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -220,10 +190,9 @@
             this.btnAdd.Enabled = false;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdd.Font = new System.Drawing.Font("Webdings", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnAdd.Location = new System.Drawing.Point(15, 134);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(12, 107);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(69, 38);
+            this.btnAdd.Size = new System.Drawing.Size(55, 30);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "a";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -233,10 +202,9 @@
             // 
             this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlay.Font = new System.Drawing.Font("Webdings", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnPlay.Location = new System.Drawing.Point(244, 134);
-            this.btnPlay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPlay.Location = new System.Drawing.Point(195, 107);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(69, 38);
+            this.btnPlay.Size = new System.Drawing.Size(55, 30);
             this.btnPlay.TabIndex = 4;
             this.btnPlay.Text = "4";
             this.btnPlay.UseVisualStyleBackColor = true;
@@ -246,10 +214,9 @@
             // 
             this.btnIdentify.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnIdentify.Font = new System.Drawing.Font("Webdings", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnIdentify.Location = new System.Drawing.Point(91, 134);
-            this.btnIdentify.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIdentify.Location = new System.Drawing.Point(73, 107);
             this.btnIdentify.Name = "btnIdentify";
-            this.btnIdentify.Size = new System.Drawing.Size(69, 38);
+            this.btnIdentify.Size = new System.Drawing.Size(55, 30);
             this.btnIdentify.TabIndex = 4;
             this.btnIdentify.Text = "s";
             this.btnIdentify.UseVisualStyleBackColor = true;
@@ -257,10 +224,9 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(15, 92);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBar1.Location = new System.Drawing.Point(12, 74);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(374, 56);
+            this.trackBar1.Size = new System.Drawing.Size(299, 45);
             this.trackBar1.TabIndex = 8;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -277,11 +243,33 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
+            // match_current_train_chkb
+            // 
+            this.match_current_train_chkb.AutoSize = true;
+            this.match_current_train_chkb.Location = new System.Drawing.Point(13, 151);
+            this.match_current_train_chkb.Name = "match_current_train_chkb";
+            this.match_current_train_chkb.Size = new System.Drawing.Size(185, 17);
+            this.match_current_train_chkb.TabIndex = 9;
+            this.match_current_train_chkb.Text = "Match With Current Training Data";
+            this.match_current_train_chkb.UseVisualStyleBackColor = true;
+            // 
+            // reset_tbl_btn
+            // 
+            this.reset_tbl_btn.Location = new System.Drawing.Point(228, 147);
+            this.reset_tbl_btn.Name = "reset_tbl_btn";
+            this.reset_tbl_btn.Size = new System.Drawing.Size(83, 23);
+            this.reset_tbl_btn.TabIndex = 10;
+            this.reset_tbl_btn.Text = "Reset Tables";
+            this.reset_tbl_btn.UseVisualStyleBackColor = true;
+            this.reset_tbl_btn.Click += new System.EventHandler(this.reset_tbl_btn_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(414, 201);
+            this.ClientSize = new System.Drawing.Size(331, 180);
+            this.Controls.Add(this.reset_tbl_btn);
+            this.Controls.Add(this.match_current_train_chkb);
             this.Controls.Add(this.lbLength);
             this.Controls.Add(this.lbPosition);
             this.Controls.Add(this.chart);
@@ -295,7 +283,6 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Speaker Identification";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormFormClosed);
@@ -327,8 +314,7 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.Button btnRecord;
         private System.Windows.Forms.ToolStripMenuItem loadTrain1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadTrain2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadTrain3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox match_current_train_chkb;
+        private System.Windows.Forms.Button reset_tbl_btn;
     }
 }

@@ -1,13 +1,13 @@
-For Extraction Process And DB Insertion:
+TRAINING DATA
+CASE 1
+By Splitting Extraction Process and Insertion Process 
+as we have to make multiple connections and 
+this takes time
+
+For Extraction Process ONLY
 - Time Before Optimization (Using Normal Nested ForEach Loops): ~10 minutes
 - Time After Using Parallelism (Using Default Parameters of Parallel.ForEach): ~7.62 minutes
 - Time After Flattening and using ForEach Loop: ~5.48 minutes
-
-Splitting Extraction Process and Insertion Process 
-as we have to make multiple connections and 
-this takes time also not logically correct using Concurrency
-
-For Extraction Process ONLY
 - Using Default Parameters: ~5.62 minutes
 - MaxDegreeOfParallelism = 6: ~5.85 minutes
 - MaxDegreeOfParallelism = 4: ~5.50 minutes
@@ -15,8 +15,29 @@ For Extraction Process ONLY
 - Partitioning = ~5.55 minutes
 - Partitioning with Array not LinkedList: ~6.32 minutes
 
-Current Time = ~5.47 minutes (Needs Optimization = 1.50 min)
+CASE 1
+Current Time = ~5.45 minutes (Needs Optimization = 1.50 min)
 
-W = MAX(W, 2*|rows – cols|)
-int jStart = Math.Max(1, i - W);
-int jEnd = Math.Min(M, i + W);
+CASE 2
+Concurrency: ~5.72 minutes
+
+CASE 3
+Concurrency: ~4.40 minutes
+
+
+TESTING DATA 
+CASE 1
+For Extraction Process and Matching with Train Data
+- Time before optimization got accuracy: 47.27% -> (> 4.15) minutes without Pruning
+- Time before using normal indexed-arrays as optimization got accuracy: 47.27% -> (~2.52) minutes with Pruning
+
+Concurrency
+- Got accuracy: 52.73% -> (~1.36) minutes without Pruning
+- Got accuracy: 52.73% -> (~1.00) minutes with Pruning (23)
+
+CASE 2
+Concurrency
+- Got accuracy: 52.73% -> (~2.01) minutes with Pruning (55)
+
+CASE 3
+- Got accuracy: 50.00% -> (~6.85) minutes with pruning (11)

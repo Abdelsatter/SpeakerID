@@ -44,28 +44,22 @@ namespace Recorder
             prev[0] = 0.0f;
 
             if (M >= 1)
-            {
                 prev[1] = EuclideanDistance(input.Frames[0], template.Frames[0]);
-            }
 
             for (int i = 1; i <= N; i++)
             {
-                // reset curr array
-                for (int j = 0; j <= M; j++)
-                {
-                    curr[j] = double.PositiveInfinity;
-                }
+                for (int j = 0; j <= M; j++) curr[j] = double.PositiveInfinity;
 
                 for (int j = 1; j <= M; j++)
                 {
                     double cost = EuclideanDistance(input.Frames[i - 1], template.Frames[j - 1]);
-                    double minTransition = prev[j];
+                    double minTrans = prev[j];
                     if (j >= 1)
-                        minTransition = Math.Min(minTransition, prev[j - 1]);
+                        minTrans = Math.Min(minTrans, prev[j - 1]);
                     if (j >= 2)
-                        minTransition = Math.Min(minTransition, prev[j - 2]);
+                        minTrans = Math.Min(minTrans, prev[j - 2]);
 
-                    curr[j] = cost + minTransition;
+                    curr[j] = cost + minTrans;
                 }
 
                 var tmp = prev;
@@ -77,7 +71,7 @@ namespace Recorder
             return result;
         }
 
-        public static double ComputeDTW(Sequence input, Sequence template, int W )
+        public static double ComputeDTW(Sequence input, Sequence template, int W)
         {
             if (input == null || input.Frames == null || input.Frames.Length == 0 ||
                 template == null || template.Frames == null || template.Frames.Length == 0)
@@ -87,13 +81,11 @@ namespace Recorder
             int M = template.Frames.Length;
 
             if (W != -1)
-            {
                 W = Math.Max(W, 2 * Math.Abs(N - M));
-            }
 
             double[] prev = new double[M + 1];
             double[] curr = new double[M + 1];
-            for (int j = 0; j <= M; j++)
+            for (short j = 0; j <= M; j++)
             {
                 prev[j] = double.PositiveInfinity;
                 curr[j] = double.PositiveInfinity;
@@ -102,31 +94,26 @@ namespace Recorder
             prev[0] = 0.0f;
 
             if (M >= 1)
-            {
                 prev[1] = EuclideanDistance(input.Frames[0], template.Frames[0]);
-            }
 
-            for (int i = 1; i <= N; i++)
+            for (short i = 1; i <= N; i++)
             {
-                int jStart = W == -1 ? 1 : Math.Max(1, i - W / 2);
-                int jEnd = W == -1 ? M : Math.Min(M, i + W / 2);
+                short jStart = (short) (W == -1 ? 1 : Math.Max(1, i - W / 2)),
+                    jEnd = (short) (W == -1 ? M : Math.Min(M, i + W / 2));
 
-                // reset curr array
-                for (int j = 0; j <= M; j++)
-                {
-                    curr[j] = double.PositiveInfinity;
-                }
+                for (short j = 0; j <= M; j++) curr[j] = double.PositiveInfinity;
 
-                for (int j = jStart; j <= jEnd; j++)
+                for (short j = jStart; j <= jEnd; j++)
                 {
-                    double cost = EuclideanDistance(input.Frames[i - 1], template.Frames[j - 1]);
-                    double minTransition = prev[j];
+                    double cost = EuclideanDistance(input.Frames[i - 1], template.Frames[j - 1]),
+                        minTrans = prev[j];
+
                     if (j >= 1)
-                        minTransition = Math.Min(minTransition, prev[j - 1]);
+                        minTrans = Math.Min(minTrans, prev[j - 1]);
                     if (j >= 2)
-                        minTransition = Math.Min(minTransition, prev[j - 2]);
+                        minTrans = Math.Min(minTrans, prev[j - 2]);
 
-                    curr[j] = cost + minTransition;
+                    curr[j] = cost + minTrans;
                 }
 
                 var tmp = prev;
@@ -134,8 +121,7 @@ namespace Recorder
                 curr = tmp;
             }
 
-            double result = Math.Round(prev[M], 1);
-            return result;
+            return Math.Round(prev[M], 1);
         }
     }
 }

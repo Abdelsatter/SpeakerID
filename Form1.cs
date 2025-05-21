@@ -28,7 +28,7 @@ namespace Recorder
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int pruning =int.Parse(Interaction.InputBox("Enter the number of frames to prune", "Pruning", "0", -1, -1));
+            int pruning = int.Parse(Interaction.InputBox("Enter the number of frames to prune", "Pruning", "0", -1, -1));
             this.Hide();
             this.func(pruning);
         }
