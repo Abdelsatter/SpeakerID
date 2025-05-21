@@ -94,9 +94,9 @@
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=AMD64">
+    <Reference Include="MWArray, Version=2.12.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\MATLAB\MATLAB Compiler Runtime\v717\toolbox\dotnetbuilder\bin\win32\v2.0\MWArray.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\compiler\MATLAB\v717\toolbox\dotnetbuilder\bin\win32\v2.0\MWArray.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
       <HintPath>..\..\..\..\..\..\..\Downloads\naudio\NAudio.dll</HintPath>
@@ -143,6 +143,12 @@
   <ItemGroup>
     <Compile Include="DBHandler.cs" />
     <Compile Include="DTW.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFuctions\AudioOperations.cs" />
     <Compile Include="GUI\MainForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +164,9 @@
     <Compile Include="Recorder\Encoder.cs" />
     <Compile Include="TestcaseLoader.cs" />
     <Compile Include="TimeHelper.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

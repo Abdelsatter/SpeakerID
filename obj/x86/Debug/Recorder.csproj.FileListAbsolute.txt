@@ -273,3 +273,4 @@ E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Data.SQLite.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\Applications\Ain Shams\Year 3\Term 2\Algorithms\Project\Repository\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\corse\Semester6\Algorithms\Project\[2] SPEAKER IDENTIFICATION\STARTUP CODE\Speaker Identification Startup Code\SpeakerID\obj\x86\Debug\Recorder.Form1.resources

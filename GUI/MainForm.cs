@@ -53,7 +53,7 @@ namespace Recorder
             chart.SimpleMode = true;
             chart.AddWaveform("wave", Color.Green, 1, false);
             updateButtons();
-            DBHandler.CreateTables();
+            //DBHandler.CreateTables();
             //DBHandler.ResetTables();
         }
 
@@ -377,6 +377,7 @@ namespace Recorder
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             string userName = Interaction.InputBox(
                 "Enter the user name for enrollment:",
                 "Speaker Enrollment",
@@ -466,21 +467,27 @@ namespace Recorder
             // Insert the ExtractedFeatures into the DB
             //DBHandler.InsertBulkUserAndAudio(ExtractedFeatures);
         }
-        private void btnIdentify_ClickAsync(object sender, EventArgs e)
+        private void Identify(int w)
         {
             double minDistance = double.MaxValue;
             string userName = "";
             var templates = DBHandler.GetAllAudioFiles();
 
             DBHandler.PrintUserSequenceCounts();
-
+            double distance;
             foreach (var user in templates)
             {
                 Console.WriteLine("User: " + user.Key);
-
-                float distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value, 1111), "ComputeDTW");
-                Console.WriteLine("Distance: " + distance);
-
+                if (w == -1)
+                {
+                     distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value), "ComputeDTW");
+                    Console.WriteLine("Distance: " + distance);
+                }
+                else
+                {
+                    distance = TimingHelper.ExecutionTime(() => DTW.ComputeDTW(seq, user.Value, w), "ComputeDTW");
+                    Console.WriteLine("Distance: " + distance);
+                }
                 if (distance < minDistance)
                 {
                     minDistance = distance;
@@ -491,6 +498,12 @@ namespace Recorder
             MessageBox.Show($"Identified user: {userName}", "Identification Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return;
+        }
+        private void btnIdentify_ClickAsync(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1(Identify);
+            form1.Show();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
