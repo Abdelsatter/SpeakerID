@@ -440,8 +440,12 @@ namespace Recorder
 
             KeyValuePair<string, Sequence>[] TestingData = FlattenDataAndExtractFeatures(data);
             string[] predicted = new string[TestingData.Length];
+            ParallelOptions options = new ParallelOptions()
+            {
+                MaxDegreeOfParallelism = Environment.ProcessorCount - 1
+            };
 
-            Parallel.For(0, TestingData.Length, i =>
+            Parallel.For(0, TestingData.Length, options, i =>
             {
                 var testSample = TestingData[i];
                 Sequence testFeatures = testSample.Value;
